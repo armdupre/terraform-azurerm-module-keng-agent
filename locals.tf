@@ -12,6 +12,17 @@ locals {
 	Eth1IpAddresses = var.Eth1IpAddresses
 	Eth1Name = "${local.Preamble}-eth1"
 	Eth1SubnetId = var.Eth1SubnetId
+	Eth2EnableAcceleratedNetworking = var.Eth2EnableAcceleratedNetworking
+	Eth2IpAddresses = var.Eth2IpAddresses
+	Eth2Name = "${local.Preamble}-eth2"
+	Eth2SubnetId = var.Eth2SubnetId
+	Eth3EnableAcceleratedNetworking = var.Eth3EnableAcceleratedNetworking
+	Eth3IpAddresses = var.Eth3IpAddresses
+	Eth3Name = "${local.Preamble}-eth3"
+	Eth3SubnetId = var.Eth3SubnetId
+	Eth4EnableAcceleratedNetworking = var.Eth4EnableAcceleratedNetworking
+	Eth4IpAddresses = var.Eth4IpAddresses
+	Eth4Name = "${local.Preamble}-eth4"
 	ImagePlanId = local.ImageSku
 	ImageSku = var.ImageSku
 	ImageVersion = var.ImageVersion

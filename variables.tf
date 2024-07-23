@@ -40,13 +40,64 @@ variable "Eth1EnableAcceleratedNetworking" {
 }
 
 variable "Eth1IpAddresses" {
-	default = ["10.0.2.12"]
+	default = ["10.0.1.12"]
 	description = "Private ip addresses associated with the second network interface"
 	type = list(string)
 }
 
 variable "Eth1SubnetId" {
 	description = "Id of the subnet associated with the second network interface"
+	type = string
+}
+
+variable "Eth2EnableAcceleratedNetworking" {
+	default = true
+	description = "Enables SR-IOV on supported VMs to improve networking performance on third network interface"
+	type = bool
+}
+
+variable "Eth2IpAddresses" {
+	default = ["10.0.2.12"]
+	description = "Private ip addresses associated with the third network interface"
+	type = list(string)
+}
+
+variable "Eth2SubnetId" {
+	description = "Id of the subnet associated with the third network interface"
+	type = string
+}
+
+variable "Eth3EnableAcceleratedNetworking" {
+	default = true
+	description = "Enables SR-IOV on supported VMs to improve networking performance on fourth network interface"
+	type = bool
+}
+
+variable "Eth3IpAddresses" {
+	default = ["10.0.3.12"]
+	description = "Private ip addresses associated with the fourth network interface"
+	type = list(string)
+}
+
+variable "Eth3SubnetId" {
+	description = "Id of the subnet associated with the fourth network interface"
+	type = string
+}
+
+variable "Eth4EnableAcceleratedNetworking" {
+	default = true
+	description = "Enables SR-IOV on supported VMs to improve networking performance on fifth network interface"
+	type = bool
+}
+
+variable "Eth4IpAddresses" {
+	default = ["10.0.4.12"]
+	description = "Private ip addresses associated with the fifth network interface"
+	type = list(string)
+}
+
+variable "Eth4SubnetId" {
+	description = "Id of the subnet associated with the fifth network interface"
 	type = string
 }
 
@@ -141,17 +192,17 @@ variable "Version" {
 }
 
 variable "VmSize" {
-	default = "Standard_F8s_v2"
+	default = "Standard_F32s_v2"
 	description = "Category, series and instance specifications associated with the VM"
 	type = string
 	validation {
-		condition = contains([	"Standard_F4s_v2",	"Standard_F8s_v2",	"Standard_F16s_v2",
-								"Experimental_Boost4", "Experimental_Boost8", "Experimental_Boost32", "Experimental_Boost64", "Experimental_Boost192"
+		condition = contains([	"Standard_F32s_v2",
+								"Experimental_Boost32", "Experimental_Boost64", "Experimental_Boost192"
 							], var.VmSize)
 		error_message = <<EOF
 VmSize must be one of the following sizes:
-	Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2,
-	Experimental_Boost4, Experimental_Boost8, Experimental_Boost32, Experimental_Boost64, Experimental_Boost192
+	Standard_F32s_v2,
+	Experimental_Boost32, Experimental_Boost64, Experimental_Boost192
 		EOF
 	}
 }
