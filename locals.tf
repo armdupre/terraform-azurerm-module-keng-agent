@@ -23,6 +23,7 @@ locals {
 	Eth4EnableAcceleratedNetworking = var.Eth4EnableAcceleratedNetworking
 	Eth4IpAddresses = var.Eth4IpAddresses
 	Eth4Name = "${local.Preamble}-eth4"
+	Eth4SubnetId = var.Eth4SubnetId
 	ImagePlanId = local.ImageSku
 	ImageSku = var.ImageSku
 	ImageVersion = var.ImageVersion
