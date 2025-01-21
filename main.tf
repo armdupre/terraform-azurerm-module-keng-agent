@@ -32,8 +32,7 @@ resource "azurerm_linux_virtual_machine" "Instance" {
 		azurerm_network_interface.Eth0.id,
 		azurerm_network_interface.Eth1.id,
 		azurerm_network_interface.Eth2.id,
-		azurerm_network_interface.Eth3.id,
-		azurerm_network_interface.Eth4.id
+		azurerm_network_interface.Eth3.id
 	]
 	boot_diagnostics {}
 	identity {
@@ -43,8 +42,7 @@ resource "azurerm_linux_virtual_machine" "Instance" {
 		azurerm_network_interface.Eth0,
 		azurerm_network_interface.Eth1,
 		azurerm_network_interface.Eth2,
-		azurerm_network_interface.Eth3,
-		azurerm_network_interface.Eth4
+		azurerm_network_interface.Eth3
 	]
 	timeouts {
 		create = "5m"
@@ -157,33 +155,6 @@ resource "azurerm_network_interface" "Eth3" {
 	}
 	dns_servers = []
 	accelerated_networking_enabled = local.Eth3EnableAcceleratedNetworking
-	ip_forwarding_enabled = local.EnableIpForwarding
-}
-
-resource "azurerm_network_interface" "Eth4" {
-	name = local.Eth4Name
-	location = local.ResourceGroupLocation
-	resource_group_name = local.ResourceGroupName
-	tags = {
-		Owner = local.UserEmailTag
-		Project = local.UserProjectTag
-		ResourceGroup = local.ResourceGroupName
-		Location = local.ResourceGroupLocation
-	}
-	dynamic "ip_configuration" {
-		for_each = range(length(local.Eth4IpAddresses))
-		iterator = index
-		content {
-			name = "ipconfig${index.value}"
-			private_ip_address = local.Eth4IpAddresses[index.value]
-			private_ip_address_allocation = "Static"
-			subnet_id = local.Eth4SubnetId
-			primary = index.value == 0 ? true : false
-			private_ip_address_version = "IPv4"
-		}
-	}
-	dns_servers = []
-	accelerated_networking_enabled = local.Eth4EnableAcceleratedNetworking
 	ip_forwarding_enabled = local.EnableIpForwarding
 }
 
