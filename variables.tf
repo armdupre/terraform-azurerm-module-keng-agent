@@ -67,23 +67,6 @@ variable "Eth2SubnetId" {
 	type = string
 }
 
-variable "Eth3EnableAcceleratedNetworking" {
-	default = true
-	description = "Enables SR-IOV on supported VMs to improve networking performance on fourth network interface"
-	type = bool
-}
-
-variable "Eth3IpAddresses" {
-	default = ["10.0.3.12"]
-	description = "Private ip addresses associated with the fourth network interface"
-	type = list(string)
-}
-
-variable "Eth3SubnetId" {
-	description = "Id of the subnet associated with the fourth network interface"
-	type = string
-}
-
 variable "ImageSku" {
 	default = "22_04-lts-gen2"
 	description = "An instance of an offer, such as a major release of a distribution."
